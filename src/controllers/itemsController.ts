@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { getAllItems } from "../models/itemsModel";
+import {
+  editItem,
+  getAllItems,
+  deleteItem,
+  addItem,
+} from "../models/itemsModel";
 import {
   BadRequestResponse,
   InternalServerErrorResponse,
@@ -21,7 +26,7 @@ type ItemResponse =
 
 type ServiceResponse = Response<ItemResponse>;
 
-export const getItems = async (
+export const getItemsController = async (
   req: Request,
   res: Response
 ): Promise<ServiceResponse> => {
@@ -42,10 +47,83 @@ export const getItems = async (
   }
 };
 
+export const addItemController = async (
+  req: Request,
+  res: Response
+): Promise<ServiceResponse> => {
+  console.log("entroooo");
+  try {
+    const newItem = req.body;
+    const addedItem = await addItem(newItem);
+
+    if (!addedItem) {
+      return serviceResponse(res, 500, null, "Failed to add item", "");
+    }
+
+    return serviceResponse(
+      res,
+      201,
+      [addedItem],
+      "Item added successfully",
+      ""
+    );
+  } catch (error) {
+    return serviceResponse(res, 500, null, "Internal Server Error", error);
+  }
+};
+
+export const editItemController = async (
+  req: Request,
+  res: Response
+): Promise<ServiceResponse> => {
+  try {
+    const updatedItem = req.body;
+    const editedItem = await editItem(updatedItem);
+
+    if (!editedItem) {
+      return serviceResponse(res, 404, null, "Item not found", "404 not found");
+    }
+
+    return serviceResponse(
+      res,
+      200,
+      editedItem,
+      "Item edited successfully",
+      ""
+    );
+  } catch (error) {
+    return serviceResponse(res, 500, null, "Internal Server Error", error);
+  }
+};
+
+export const deleteItemController = async (
+  req: Request,
+  res: Response
+): Promise<ServiceResponse> => {
+  try {
+    const itemId = req.params.id;
+    const deletedItem = await deleteItem(itemId);
+
+    if (!deletedItem) {
+      return serviceResponse(res, 404, null, "Item not found", "404 not found");
+    }
+
+    return serviceResponse(
+      res,
+      200,
+      deletedItem,
+      "Item deleted successfully",
+      ""
+    );
+  } catch (error) {
+    return serviceResponse(res, 500, null, "Internal Server Error", error);
+  }
+};
+
 const serviceResponse = (
   res: Response,
   code: number,
-  data: Item[] | null,
+  data: Item[] | Item | null,
   message: string,
   errorMessage: string | unknown
 ): ServiceResponse => {
