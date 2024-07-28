@@ -10,7 +10,8 @@ Content-Type: application/json
 {
     "name": "New Item",
     "description": "This is a new item",
-    "quantity": "1"
+    "quantity": "1",
+    "checked": false
 }
 
 
@@ -21,7 +22,8 @@ Content-Type: application/json
 {
   "id": "1",
   "name": "Updated Item",
-  "quantity": 2
+  "quantity": 2,
+  "checked": false
 }
 
 
