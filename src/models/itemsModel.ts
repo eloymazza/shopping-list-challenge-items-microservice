@@ -4,19 +4,19 @@ const mockItemsData: Item[] = [
   {
     id: "1",
     name: "Milk",
-    descriotion: "Dairy",
+    description: "Dairy",
     quantity: 2,
   },
   {
     id: "2",
     name: "Bread",
-    descriotion: "Bakery",
+    description: "Bakery",
     quantity: 1,
   },
   {
     id: "3",
     name: "Eggs",
-    descriotion: "Dairy",
+    description: "Dairy",
     quantity: 12,
   },
 ];
