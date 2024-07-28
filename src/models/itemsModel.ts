@@ -1,28 +1,29 @@
 import { Item } from "../types/types";
 
-const mockItemsData: Item[] = [
-  {
-    id: "1",
-    name: "Milk",
-    description: "Dairy",
-    quantity: 2,
-    checked: false,
-  },
-  {
-    id: "2",
-    name: "Bread",
-    description: "Bakery",
-    quantity: 1,
-    checked: false,
-  },
-  {
-    id: "3",
-    name: "Eggs",
-    description: "Dairy",
-    quantity: 2,
-    checked: false,
-  },
-];
+// const mockItemsData: Item[] = [
+//   {
+//     id: "1",
+//     name: "Milk",
+//     description: "Dairy",
+//     quantity: 2,
+//     checked: false,
+//   },
+//   {
+//     id: "2",
+//     name: "Bread",
+//     description: "Bakery",
+//     quantity: 1,
+//     checked: false,
+//   },
+//   {
+//     id: "3",
+//     name: "Eggs",
+//     description: "Dairy",
+//     quantity: 2,
+//     checked: false,
+//   },
+// ];
+const mockItemsData: Item[] = [];
 
 export const getAllItems = async (): Promise<Item[] | undefined> => {
   const items = mockItemsData;
@@ -37,10 +38,12 @@ export const addItem = async (itemData: Item): Promise<Item | undefined> => {
 };
 
 export const editItem = async (
-  updatedItem: Item
+  item: Item,
+  id: string
 ): Promise<Item | undefined> => {
-  const index = mockItemsData.findIndex((i) => i.id === updatedItem.id);
+  const index = mockItemsData.findIndex((i) => i.id === id);
   if (index !== -1) {
+    const updatedItem = { ...mockItemsData[index], ...item };
     mockItemsData[index] = updatedItem;
     return updatedItem;
   }

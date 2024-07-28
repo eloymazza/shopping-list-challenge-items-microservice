@@ -16,13 +16,13 @@ Content-Type: application/json
 
 
 ### PUT /items
-PUT http://localhost:3000/items
+PUT http://localhost:3000/items/6c169396-35b1-4585-99d8-ebb58a0a2d1e
 Content-Type: application/json
 
 {
-  "id": "1",
   "name": "Updated Item",
-  "quantity": 2,
+  "quantity": 3,
+  "description": "This is an updated item",
   "checked": false
 }
 

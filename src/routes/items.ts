@@ -9,7 +9,7 @@ import {
 const router = Router();
 
 router.get("/", getItemsController);
-router.put("/", editItemController);
+router.put("/:id", editItemController);
 router.post("/", addItemController);
 router.delete("/:id", deleteItemController);
 

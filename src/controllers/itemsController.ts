@@ -51,7 +51,6 @@ export const addItemController = async (
   req: Request,
   res: Response
 ): Promise<ServiceResponse> => {
-  console.log("entroooo");
   try {
     const newItem = req.body;
     const addedItem = await addItem(newItem);
@@ -78,7 +77,8 @@ export const editItemController = async (
 ): Promise<ServiceResponse> => {
   try {
     const updatedItem = req.body;
-    const editedItem = await editItem(updatedItem);
+    const itemId = req.params.id;
+    const editedItem = await editItem(updatedItem, itemId);
 
     if (!editedItem) {
       return serviceResponse(res, 404, null, "Item not found", "404 not found");
