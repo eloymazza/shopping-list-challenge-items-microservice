@@ -16,17 +16,21 @@ First of all, run `npm install` for download the dependencies.
 
 `npm run dev` - in order to run the server in a development environment.
 
-`npm run production`- n order to run the server in a production environment.
+For running for production:
+
+`npm run build`
+
+`npm run serve`
 
 ## Dockerization
 
 For run this app as a docker container, ensure you have docker installed and run the following commands:
 
-`docker build -t 'shopping-list:v1.0' .`
+`docker build -t 'shopping-list-ms:v1.0' .`
 
 and then
 
-`docker run -p 3000:3000 shopping-list:v1.0`
+`docker run -p 3000:3000 shopping-list-ms:v1.0`
 
 Or simply run:
 
