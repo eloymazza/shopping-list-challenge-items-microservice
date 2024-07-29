@@ -8,7 +8,8 @@ export const getAllItems = async (): Promise<Item[] | undefined> => {
 };
 
 export const addItem = async (itemData: Item): Promise<Item | undefined> => {
-  const randomId = crypto.randomUUID().toString();
+  // const randomId = crypto.randomUUID().toString(); // Only works in node v20
+  const randomId = Math.random() + itemData.name;
   const newItem = { ...itemData, id: randomId };
   mockItemsData.push(newItem);
   return newItem;
