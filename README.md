@@ -6,7 +6,7 @@ Shopping List CRUD microservice.
 
 ### Requisites
 
-Have installed node 18.\* version or latest.
+Have installed node 20.\* version or latest.
 
 ## Steps
 
