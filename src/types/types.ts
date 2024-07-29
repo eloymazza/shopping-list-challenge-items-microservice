@@ -2,6 +2,6 @@ export interface Item {
   id: string;
   name: string;
   description: string;
-  checked: boolean;
+  purchased: boolean;
   quantity: number;
 }
