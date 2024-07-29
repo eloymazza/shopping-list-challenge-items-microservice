@@ -1,28 +1,5 @@
 import { Item } from "../types/types";
 
-// const mockItemsData: Item[] = [
-//   {
-//     id: "1",
-//     name: "Milk",
-//     description: "Dairy",
-//     quantity: 2,
-//     checked: false,
-//   },
-//   {
-//     id: "2",
-//     name: "Bread",
-//     description: "Bakery",
-//     quantity: 1,
-//     checked: false,
-//   },
-//   {
-//     id: "3",
-//     name: "Eggs",
-//     description: "Dairy",
-//     quantity: 2,
-//     checked: false,
-//   },
-// ];
 const mockItemsData: Item[] = [];
 
 export const getAllItems = async (): Promise<Item[] | undefined> => {
